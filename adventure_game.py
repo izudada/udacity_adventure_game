@@ -15,20 +15,24 @@ def print_pause(string, num):
 
 def enter_house():
     print_pause("You approach the door of the house.", 2)
-    print_pause(f"You are about to knock when the door opens and out steps a {weapon}.", 4)
+    print_pause(f"You are about to knock when the door"
+                "opens and out steps a {weapon}.", 4)
     print_pause(f"Eep! This is the {weapon}'s house!", 2)
     print("The pirate attacks you!", 2)
 
-    user_house_option = int(input("Would you like to (1) fight or (2) run away? \n"))
+    user_house_option = int(input("Would you like to (1) fight "
+                            "or (2) run away? \n"))
     if user_house_option == 2:
-        print_pause("You run back into the field. Luckily, you don't seem to have been followed. \n", 4)
+        print_pause("You run back into the field. Luckily, you don't "
+                    "seem to have been followed. \n", 4)
     elif user_house_option == 1:
         fight()
 
 
 def enter_cave():
     """
-        This section allows the user to peer into and enter the cave to retrieve a weapon
+        This section allows the user to peer into
+        and enter the cave to retrieve a weapon
     """
     global cave_mode
 
@@ -37,7 +41,8 @@ def enter_cave():
         print_pause("It turns out to be only a very small cave.", 2)
         print_pause("Your eye catches a glint of metal behind a rock.", 2)
         print_pause("You have found the magical Sword of Ogoroth!", 2)
-        print_pause(f"You discard your silly old {weapon} and take the sword with you.", 4)
+        print_pause(f"You discard your silly old {weapon}"
+                    " and take the sword with you.", 4)
         cave_mode = True
     else:
         print_pause("You've been here before, and gotten all the good stuff. It's just an empty cave now. \n", 2)
