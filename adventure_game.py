@@ -1,7 +1,12 @@
 import time
+import random
 
 
 cave_mode = False
+enemies = ['troll', 'wicked fairie', 'pirate', 'gorgon', 'dragon']
+enemy = random.choice(enemies)
+weapon = 'dagger'
+
 
 def print_pause(string, num):
     print(string)
@@ -10,13 +15,15 @@ def print_pause(string, num):
 
 def enter_house():
     print_pause("You approach the door of the house.", 2)
-    print_pause("You are about to knock when the door opens and out steps a pirate.", 4)
-    print_pause("Eep! This is the pirate's house!", 2)
+    print_pause(f"You are about to knock when the door opens and out steps a {weapon}.", 4)
+    print_pause(f"Eep! This is the {weapon}'s house!", 2)
     print("The pirate attacks you!", 2)
 
     user_house_option = int(input("Would you like to (1) fight or (2) run away? \n")) 
     if user_house_option == 2:
         print_pause("You run back into the field. Luckily, you don't seem to have been followed. \n", 4)
+    elif user_house_option == 1:
+        fight()
 
 
 def enter_cave():
@@ -30,37 +37,22 @@ def enter_cave():
         print_pause("It turns out to be only a very small cave.", 2)
         print_pause("Your eye catches a glint of metal behind a rock.", 2)
         print_pause("You have found the magical Sword of Ogoroth!", 2)
-        print_pause("You discard your silly old dagger and take the sword with you.", 4)
+        print_pause(f"You discard your silly old {weapon} and take the sword with you.", 4)
         cave_mode = True
     else:
         print_pause("You've been here before, and gotten all the good stuff. It's just an empty cave now. \n", 2)
     print_pause("You walk back out to the field.\n", 2)
             
 
-def figth():
-    print_pause("You approach the door of the house.", 3)
-    print_pause("You are about to knock when the door opens and out steps a gorgon.", 4)
-    print_pause("Eep! This is the gorgon's house!", 3)
-    print_pause("The gorgon attacks you!", 2)
-    print_pause("Would you like to (1) fight or (2) run away? \n")
-
-
-
-# As the gorgon moves to attack, you unsheath your new sword.
-# The Sword of Ogoroth shines brightly in your hand as you brace yourself for the attack.
-# But the gorgon takes one look at your shiny new toy and runs away!
-# You have rid the town of the gorgon. You are victorious!
-
-
 def game_intro():
     """
         This is to introduce the user to the scheme or game plan
     """
-
-    print_pause("Rumor has it that a gorgon is somewhere around here, and has been terrifying the nearby village.", 3)
+    print("\n")
+    print_pause(f"Rumor has it that a {enemy} is somewhere around here, and has been terrifying the nearby village.", 3)
     print_pause("In front of you is a house.", 2)
     print_pause("To your right is a dark cave.", 2)
-    print_pause("In your hand you hold your trusty (but not very effective) dagger. \n", 3)
+    print_pause(f"In your hand you hold your trusty (but not very effective) {weapon}. \n", 3)
     
     while True:
         print_pause("Enter 1 to knock on the door of the house.", 2)
@@ -71,6 +63,19 @@ def game_intro():
             enter_cave()
         elif user_choice == 1:
             enter_house()
+
+
+def fight():
+    print_pause(f"As the {enemy} moves to attack, you unsheath your new sword.", 4)
+    print_pause("The Sword of Ogoroth shines brightly in your hand as you brace yourself for the attack.", 5)
+    print_pause(f"But the {enemy} takes one look at your shiny new toy and runs away!", 4)
+    print_pause(f"You have rid the town of the {enemy}. You are victorious!", 4)
+
+    repeat_game = input("Would you like to play again? (y/n)").lower()
+    if repeat_game == 'y':
+        game_intro()
+    elif repeat_game == 'n':
+        quit()
 
 
 game_intro()
