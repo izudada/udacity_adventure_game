@@ -15,9 +15,9 @@ def print_pause(string, num):
 
 def enter_house():
     print_pause("You approach the door of the house.", 2)
-    print_pause(f"You are about to knock when the door"
-                "opens and out steps a {weapon}.", 4)
-    print_pause(f"Eep! This is the {weapon}'s house!", 2)
+    print_pause("You are about to knock when the door "
+                f"opens and out steps a {weapon}.", 4)
+    print_pause(f"Eep! This is the {enemy}'s house!", 2)
     print("The pirate attacks you!", 2)
 
     user_house_option = int(input("Would you like to (1) fight "
@@ -55,12 +55,12 @@ def game_intro():
         This is to introduce the user to the scheme or game plan
     """
     print("\n")
-    print_pause(f"Rumor has it that a {enemy} is somewhere around here,"
+    print_pause(f"Rumor has it that a {enemy} is somewhere around here, "
                 "and has been terrifying the nearby village.", 3)
     print_pause("In front of you is a house.", 2)
     print_pause("To your right is a dark cave.", 2)
-    print_pause(f"In your hand you hold your trusty"
-                "(but not very effective) {weapon}. \n", 3)
+    print_pause("In your hand you hold your trusty "
+                f"(but not very effective) {weapon}. \n", 3)
 
     while True:
         print_pause("Enter 1 to knock on the door of the house.", 2)
@@ -74,13 +74,13 @@ def game_intro():
 
 
 def fight():
-    print_pause(f"As the {enemy} moves to attack, you"
+    print_pause(f"As the {enemy} moves to attack, you "
                 "unsheath your new sword.", 4)
-    print_pause("The Sword of Ogoroth shines brightly in your"
+    print_pause("The Sword of Ogoroth shines brightly in your "
                 "hand as you brace yourself for the attack.", 5)
-    print_pause(f"But the {enemy} takes one look at your"
+    print_pause(f"But the {enemy} takes one look at your "
                 "shiny new toy and runs away!", 4)
-    print_pause(f"You have rid the town of the {enemy}."
+    print_pause(f"You have rid the town of the {enemy}. "
                 "You are victorious!", 4)
 
     repeat_game = input("Would you like to play again? (y/n)").lower()
