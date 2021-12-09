@@ -16,7 +16,7 @@ def print_pause(string, num):
 def enter_house():
     print_pause("You approach the door of the house.", 2)
     print_pause("You are about to knock when the door "
-                f"opens and out steps a {weapon}.", 4)
+                f"opens and out steps a {enemy}.", 4)
     print_pause(f"Eep! This is the {enemy}'s house!", 2)
     print("The pirate attacks you!", 2)
 
@@ -83,11 +83,12 @@ def fight():
     print_pause(f"You have rid the town of the {enemy}. "
                 "You are victorious!", 4)
 
-    repeat_game = input("Would you like to play again? (y/n)").lower()
-    if repeat_game == 'y':
-        game_intro()
-    elif repeat_game == 'n':
-        quit()
+    while True:
+        repeat_game = input("Would you like to play again? (y/n)").lower()
+        if repeat_game == 'y':
+            game_intro()
+        elif repeat_game == 'n':
+            quit()
 
 
 game_intro()
