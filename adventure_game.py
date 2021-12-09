@@ -13,19 +13,36 @@ def print_pause(string, num):
     time.sleep(num)
 
 
+def validate_input(prompt, options):
+    """
+        A function to validate user input
+    """
+    while True:
+        option = input(prompt).lower()
+        if option in options:
+            return option
+        print_pause(f'Sorry, the option "{option}" is invalid. Try again!', 1)
+
+
 def enter_house():
+    """
+        This is the cave sequence for the user
+        option to take them into the cave to
+        retrieve a weapon
+    """
     print_pause("You approach the door of the house.", 2)
     print_pause("You are about to knock when the door "
                 f"opens and out steps a {enemy}.", 4)
     print_pause(f"Eep! This is the {enemy}'s house!", 2)
     print("The pirate attacks you!", 2)
 
-    user_house_option = int(input("Would you like to (1) fight "
-                            "or (2) run away? \n"))
-    if user_house_option == 2:
+    user_input_validated = validate_input(("Would you like to (1)"
+                        " fight or (2) run away? \n"), ['1', '2'])
+    if user_input_validated == '2':
         print_pause("You run back into the field. Luckily, you don't "
                     "seem to have been followed. \n", 4)
-    elif user_house_option == 1:
+        select_direction()
+    elif user_input_validated == '1':
         fight()
 
 
@@ -49,6 +66,24 @@ def enter_cave():
                     " It's just an empty cave now. \n", 2)
     print_pause("You walk back out to the field.\n", 2)
 
+    select_direction()
+
+
+def select_direction():
+    """
+        A function for repeated questions for directing the user
+    """
+    print_pause("Enter 1 to knock on the door of the house.", 2)
+    print_pause("Enter 2 to peer into the cave.", 2)
+    print_pause("What would you like to do?", 3)
+
+    user_input_validated = validate_input("(Please enter "
+                "1 or 2.) \n", ['1', '2'])
+    if user_input_validated == '2':
+        enter_cave()
+    elif user_input_validated == '1':
+        enter_house()
+
 
 def game_intro():
     """
@@ -62,18 +97,17 @@ def game_intro():
     print_pause("In your hand you hold your trusty "
                 f"(but not very effective) {weapon}. \n", 3)
 
-    while True:
-        print_pause("Enter 1 to knock on the door of the house.", 2)
-        print_pause("Enter 2 to peer into the cave.", 2)
-        print_pause("What would you like to do?", 3)
-        user_choice = int(input("(Please enter 1 or 2.) \n"))
-        if user_choice == 2:
-            enter_cave()
-        elif user_choice == 1:
-            enter_house()
+    select_direction()
 
 
 def fight():
+    """
+        This function serves as a fight sequence for the
+        user. Where victory is assured and user
+        will determine if user wants to play again or
+        not
+    """
+
     print_pause(f"As the {enemy} moves to attack, you "
                 "unsheath your new sword.", 4)
     print_pause("The Sword of Ogoroth shines brightly in your "
@@ -83,12 +117,12 @@ def fight():
     print_pause(f"You have rid the town of the {enemy}. "
                 "You are victorious!", 4)
 
-    while True:
-        repeat_game = input("Would you like to play again? (y/n)").lower()
-        if repeat_game == 'y':
-            game_intro()
-        elif repeat_game == 'n':
-            quit()
+    user_input_validated = validate_input("Would you like to play again? (y/n) \n", ['y', 'n'])
+
+    if user_input_validated == 'y':
+        game_intro()
+    elif user_input_validated == 'n':
+        quit()
 
 
 game_intro()
