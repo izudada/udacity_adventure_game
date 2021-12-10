@@ -36,8 +36,8 @@ def enter_house():
     print_pause(f"Eep! This is the {enemy}'s house!", 2)
     print("The pirate attacks you!", 2)
 
-    user_input_validated = validate_input(("Would you like to (1)"
-                        " fight or (2) run away? \n"), ['1', '2'])
+    input_string = "Would you like to (1) fight or (2) run away? \n"
+    user_input_validated = validate_input(input_string, ['1', '2'])
     if user_input_validated == '2':
         print_pause("You run back into the field. Luckily, you don't "
                     "seem to have been followed. \n", 4)
@@ -77,8 +77,8 @@ def select_direction():
     print_pause("Enter 2 to peer into the cave.", 2)
     print_pause("What would you like to do?", 3)
 
-    user_input_validated = validate_input("(Please enter "
-                "1 or 2.) \n", ['1', '2'])
+    input_string = "(Please enter 1 or 2.) \n"
+    user_input_validated = validate_input(input_string, ['1', '2'])
     if user_input_validated == '2':
         enter_cave()
     elif user_input_validated == '1':
@@ -117,7 +117,8 @@ def fight():
     print_pause(f"You have rid the town of the {enemy}. "
                 "You are victorious!", 4)
 
-    user_input_validated = validate_input("Would you like to play again? (y/n) \n", ['y', 'n'])
+    input_string = "Would you like to play again? (y/n) \n"
+    user_input_validated = validate_input(input_string, ['y', 'n'])
 
     if user_input_validated == 'y':
         game_intro()
